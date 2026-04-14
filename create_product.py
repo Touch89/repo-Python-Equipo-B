@@ -10,11 +10,11 @@ wcapi = API(
 
 try:
     data = {
-        "name": "Producto X",
-        "type": "X",
+        "name": "Producto x",
+        "type": "simple",
         "regular_price": "100.00",
         "description": "Producto de prueba",
-        "sku": "001"
+        "sku": "009"
     }
 
     response = wcapi.post("products", data)
@@ -22,7 +22,7 @@ try:
     if response.status_code in [200, 201]:
         producto = response.json()
         print("Producto creado correctamente")
-        print(f"ID: {producto['id']} | Nombre: {producto['name']}")
+        print(f"ID: {producto['id']} | Nombre: {producto['name']} | Precio: {producto['regular_price']}")
     else:
         print(f"Error {response.status_code}: {response.text}")
 
