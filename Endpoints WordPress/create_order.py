@@ -2,8 +2,8 @@ from woocommerce import API
 
 wcapi = API(
     url="http://localhost:8080",
-    consumer_key="ck_60afc1def93687705868d1dcae2f4448d9719355",
-    consumer_secret="cs_fbf5b942b4445ebf0340a17384bb5e934a3f2c12",
+    consumer_key="ck_9c6d28c23a59b2eafd8509daadc67fed2e37b4db",
+    consumer_secret="cs_e78854f36a3a1c9a568221fa1b5e328351271571",
     version="wc/v3",
     timeout=20
 )
