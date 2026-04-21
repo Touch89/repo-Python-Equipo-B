@@ -8,8 +8,8 @@ api_key = "3c04e0ec525ffc1e2ed2a76a46f04e1cf5e88592"
 
 wcapi = API(
     url="http://localhost:8080",
-    consumer_key="ck_60afc1def93687705868d1dcae2f4448d9719355",
-    consumer_secret="cs_fbf5b942b4445ebf0340a17384bb5e934a3f2c12",
+    consumer_key="ck_6ca7ce3cfe2e00e29777e448b45518707b22f404",
+    consumer_secret="cs_ac042df24d3e1cb6f12bda36415605c0e26502ea",
     version="wc/v3",
     timeout=20
 )
