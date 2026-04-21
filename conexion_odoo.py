@@ -2,10 +2,10 @@ from woocommerce import API
 import xmlrpc.client
 
 url = "http://localhost:8069"
-db = "EMIDB"
-username = "emiliovad1205@gmail.com"
-password = "Emilio#121105"
-api_key = "3c04e0ec525ffc1e2ed2a76a46f04e1cf5e88592"
+db = "angeldb"
+username = "15234649@modelo.edu.mx"
+password = "Ang345el$"
+api_key = "fcb6bb8078a76a7b3df4c48cd94793ddf51874c3"
 
 wcapi = API(
     url="http://localhost:8080",
