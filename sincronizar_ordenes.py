@@ -76,17 +76,26 @@ def email_valido(email):
     return bool(local.strip()) and "." in dominio and not dominio.startswith(".") and not dominio.endswith(".")
 
 
-def orden_ya_existe_en_wc(numero_odoo):
-    resultado = wcapi.get("orders", params={"search": numero_odoo, "per_page": 5}).json()
-    if isinstance(resultado, list):
+def obtener_refs_wc_existentes():
+    refs = set()
+    pagina = 1
+    while True:
+        resultado = wcapi.get("orders", params={"per_page": 100, "page": pagina}).json()
+        if not isinstance(resultado, list) or not resultado:
+            break
         for o in resultado:
-            metas = {m["key"]: m["value"] for m in o.get("meta_data", [])}
-            if metas.get("_odoo_ref") == numero_odoo:
-                return True
-    return False
+            for m in o.get("meta_data", []):
+                if m.get("key") == "_odoo_ref":
+                    refs.add(m.get("value"))
+        if len(resultado) < 100:
+            break
+        pagina += 1
+    return refs
 
 
 try:
+    refs_existentes = obtener_refs_wc_existentes()
+
     ordenes_odoo = models.execute_kw(
         db, uid, api_key,
         'sale.order', 'search_read',
@@ -99,7 +108,7 @@ try:
     for orden in ordenes_odoo:
         numero = orden["name"]
 
-        if orden_ya_existe_en_wc(numero):
+        if numero in refs_existentes:
             print(f"Ya existe en WooCommerce: {numero}")
             continue
 
